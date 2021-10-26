@@ -25,24 +25,7 @@ require __DIR__.'/auth.php';
 
 
 Route::get('user',function(){
-   //\App\Models\User::factory()->count(3)->create();
 
-    /*
-    \App\Models\Address::create([
-        'user_id' => 1,
-        'country' => 'Bangladesh'
-    ]);
-
-    \App\Models\Address::create([
-        'user_id' => 2,
-        'country' => 'Pakistan'
-    ]);
-
-    \App\Models\Address::create([
-        'user_id' => 2,
-        'country' => 'Tarki'
-    ]);
-    */
 
     /*
     ////create another way
@@ -80,36 +63,9 @@ Route::get('user',function(){
     /*
     $addresses = \App\Models\Address::with('user')->get();
     return view('user.index',['address' => $addresses]);
-    */
+    */  
 
 
-    //$users = \App\Models\User::with('addresses')->get();
-    // $users[0]->addresses()->create([
-    //     'country' => "iran"
-    // ]);
-    //return view('user.index',['users' => $users]);
-
-
-
-
-    /*
-    $users = \App\Models\User::with('posts')->get();
-    $users[0]->posts()->create([
-        'title' => 'post 4',
-    ]);
-
-    $users[0]->posts()->create([
-        'title' => 'post 5',
-    ]);
-
-    $users[4]->posts()->create([
-        'title' => 'post 6',
-    ]);
-    */
-    
-    
-    
-    
     /*
     //if user has post              has('relation function name')
     
@@ -145,32 +101,20 @@ Route::get('user',function(){
 
 
 
+    /*
     //find user where user have no post           doesntHave('posts')
     $users = \App\Models\User::doesntHave('posts')->with('posts')->get();
+    return view('user.index',['users' => $users]);
+    */
+
+
+    $users = \App\Models\User::with('posts','addresses')->get();
     return view('user.index',['users' => $users]);
 
 });
 
 Route::get('/posts',function(){
-    //===============One to many
-
-    /*
-    \App\Models\Post::create([
-        'user_id' => 1,
-        'title' => "Post title One"
-    ]);
-    
-    \App\Models\Post::create([
-        'user_id' => 2,
-        'title' => "Post title two"
-    ]);
-
-    */
-    // \App\Models\Post::create([
-    //     'title' => "Post title two"
-    // ]);
     $posts = \App\Models\Post::all();
 
-    //return view('post.index',compact($posts));
     return view('post.index',['posts'=>$posts]);
 });

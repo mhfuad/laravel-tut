@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+use Faker\Factory as Faker;
+
 class AddressSeeder extends Seeder
 {
     /**
@@ -14,6 +16,8 @@ class AddressSeeder extends Seeder
      */
     public function run()
     {
+        $this->faker = Faker::create();
+        
         DB::table('addresses')->insert([
             'user_id' => 1,
             'country' => 'Bangladesh',
@@ -21,52 +25,52 @@ class AddressSeeder extends Seeder
         
         DB::table('addresses')->insert([
             'user_id' => 2,
-            'country' => 'Pakistan',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 3,
-            'country' => 'Turky',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 4,
-            'country' => 'Saudia arab',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 5,
-            'country' => 'Morokko',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 6,
-            'country' => 'Spain',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 7,
-            'country' => 'Madina',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 8,
-            'country' => 'Kufa',
+            'country' => $this->faker->country(),
         ]);
         
         DB::table('addresses')->insert([
             'user_id' => 9,
-            'country' => 'Hafsha',
+            'country' => $this->faker->country(),
         ]);
 
         DB::table('addresses')->insert([
             'user_id' => 10,
-            'country' => 'Makka',
+            'country' => $this->faker->country(),
         ]);
 
         DB::table('addresses')->insert([
             'user_id' => 11,
-            'country' => 'yamen',
+            'country' => $this->faker->country(),
         ]);
     }
 }
