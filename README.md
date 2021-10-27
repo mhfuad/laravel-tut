@@ -8,6 +8,7 @@ laravel-tut
 # routes
 user
 posts
+tags
 
 
 #php artisan tinker

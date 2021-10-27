@@ -114,7 +114,34 @@ Route::get('user',function(){
 });
 
 Route::get('/posts',function(){
+    /*
     $posts = \App\Models\Post::all();
-
     return view('post.index',['posts'=>$posts]);
+    */
+
+    //====================manay to many
+    // $posts = \App\Models\Post::with('tags')->get();
+    // dd($posts);
+
+    $post = \App\Models\Post::first();
+    //remove numer one tag
+    //$post->tags()->detach([1]);
+
+    //remove all tage
+    //$post->tags()->detach();
+
+    //$post->tags()->attach([2,3,4]);
+
+    //remove all tag and add 2 and 4 tag
+    $post->tags()->sync([1,3]);
+
+
+    
+    $posts = \App\Models\Post::with('user','tags')->get();
+    return view('post.index',compact('posts'));
+});
+
+Route::get('/tags', function(){
+    $tags = \App\Models\Tag::with('posts')->get();
+    return view('tag.index', compact('tags'));
 });

@@ -19,7 +19,12 @@ class DatabaseSeeder extends Seeder
             DefaultUserSeeder::class,
             AddressSeeder::class,
             PostSeeder::class,
+            TagSeeder::class
         ]);
-        
+
+        $tag = \App\Models\Tag::first();
+        $post = \App\Models\Post::first();
+        $post->tags()->attach($tag);
+        $post->tags()->attach([2,3,4]);
     }
 }
