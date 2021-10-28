@@ -22,9 +22,12 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class
         ]);
 
-        $tag = \App\Models\Tag::first();
         $post = \App\Models\Post::first();
-        $post->tags()->attach($tag);
+        $post->tags()->attach([
+            1 => [
+                'status' => 'approved'
+            ]
+        ]);
         $post->tags()->attach([2,3,4]);
     }
 }

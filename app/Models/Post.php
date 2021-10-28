@@ -19,7 +19,9 @@ class Post extends Model
     }
 
     public function tags()
-    {   //parameter are relation model::class, pivot_table, this_model_id, relation_modle_id
-        return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
+    {   //parameter are relation model::class, pivot_table, this_class_model_id, relation_modle_id
+        return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id')
+            ->withTimestamps()
+            ->withPivot('status');
     }
 }
