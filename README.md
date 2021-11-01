@@ -9,6 +9,7 @@ laravel-tut
 user
 posts
 tags
+attach_detach_event_handle
 
 
 #php artisan tinker

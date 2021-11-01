@@ -123,7 +123,7 @@ Route::get('/posts',function(){
     // $posts = \App\Models\Post::with('tags')->get();
     // dd($posts);
 
-    $post = \App\Models\Post::first();
+    //$post = \App\Models\Post::first();
     //remove numer one tag
     //$post->tags()->detach([1]);
 
@@ -133,7 +133,7 @@ Route::get('/posts',function(){
     //$post->tags()->attach([2,3,4]);
 
     //remove all tag and add 2 and 4 tag
-    $post->tags()->sync([1,3]);
+    //$post->tags()->sync([1,3]);
 
 
     
@@ -144,4 +144,25 @@ Route::get('/posts',function(){
 Route::get('/tags', function(){
     $tags = \App\Models\Tag::with('posts')->get();
     return view('tag.index', compact('tags'));
+});
+
+Route::get('attach_detach_event_handle',function(){
+    $post = \App\Models\Post::first();
+    // $post->tags()->attach([
+    //     2 => [
+    //         'status' => 'approved'
+    //     ]
+    // ]);
+
+    // $post->tags()->detach([
+    //     2 => [
+    //         'status' => 'approved'
+    //     ]
+    // ]);
+    
+    $post->tags()->sync([
+        2 => [
+            'status' => 'approved'
+        ]
+    ]);
 });
