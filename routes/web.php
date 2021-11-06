@@ -166,3 +166,9 @@ Route::get('attach_detach_event_handle',function(){
         ]
     ]);
 });
+
+Route::get('/projects',function(){
+    $projects = \App\Models\Project::find(1);
+    //return $projects->task;
+    dd($projects->tasks);
+});
